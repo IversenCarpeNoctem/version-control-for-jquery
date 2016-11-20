@@ -3,7 +3,7 @@ Contributors: leanderiversen
 Tags: jquery, javascript, update, control, version
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,10 @@ If you like the plugin, please review it! Every review is highly appreciated, bu
 
 
 == Changelog ==
+= 1.0.2 =
+* Corrected the way of requiring the "Settings" page. Thanks to Ivaylo Draganov for noticing!
+* Minor adjustments
+
 = 1.0.1 =
 * jQuery Core version 3.1.1 has been added
 * The plugin now supports the Norwegian language.
