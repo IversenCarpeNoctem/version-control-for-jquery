@@ -2,8 +2,8 @@
 Contributors: leanderiversen
 Tags: jquery, javascript, update, control, version
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 1.0.2
+Tested up to: 4.7.3
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,9 @@ If you like the plugin, please review it! Every review is highly appreciated, bu
 
 
 == Changelog ==
+= 1.0.3 =
+* jQuery Core versions 3.2.0 and 3.2.1 have been added
+
 = 1.0.2 =
 * Corrected the way of requiring the "Settings" page. Thanks to Ivaylo Draganov for noticing!
 * Minor adjustments
