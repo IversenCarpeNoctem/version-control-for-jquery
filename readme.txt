@@ -1,16 +1,16 @@
 === Version Control for jQuery ===
 Contributors: leanderiversen
-Tags: jquery, javascript, update, control, version
+Tags: jquery, core, migrate, javascript, update, control, version
 Requires at least: 4.0
-Tested up to: 4.7.3
-Stable tag: 1.0.3
+Tested up to: 4.8
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Version Control for jQuery is the easiest way to control the version of jQueryused on your website.
 
 == Description ==
-Version Control for jQuery is the easiest way to control the version of jQuery used on your website. Whether you just want to run a stable Wordpress website, or if you are a developer and want to cross check your website with the various version of jQuery, the plugin will always have the latest minified version of jQuery ready for you, loaded from the super-fast jQuery CDN. The default settings of this plugin are always the latest stable jQuery release.
+Version Control for jQuery is the easiest way to control the version of jQuery used on your website. Whether you just want to run a stable WordPress website, or if you are a developer and want to cross check your website with the various version of jQuery, the plugin will always have the latest minified version of jQuery ready for you, loaded from the super-fast jQuery CDN. You can also test the latest pre-versions of both jQuery Core and jQuery Migrate, but the settings of the plugin will always default to the latest stable release.
 
 Please notice that no files are replaced, therefore deactivation of this plugin returns your site to it's original state.
 
@@ -24,15 +24,18 @@ If you like the plugin, please review it! Every review is highly appreciated, bu
 
 
 == Changelog ==
+= 1.0.4 =
+* Added the pre-versions of jQuery Core version 3.2.2 and jQuery Migrate version 3.0.1, in case you want to test your website with the upcoming versions of jQuery. The plugin still defaults to the latest stable version of jQuery.
+
 = 1.0.3 =
-* jQuery Core versions 3.2.0 and 3.2.1 have been added
+* jQuery Core versions 3.2.0 and 3.2.1 have been added.
 
 = 1.0.2 =
 * Corrected the way of requiring the "Settings" page. Thanks to Ivaylo Draganov for noticing!
-* Minor adjustments
+* Minor adjustments.
 
 = 1.0.1 =
-* jQuery Core version 3.1.1 has been added
+* jQuery Core version 3.1.1 has been added.
 * The plugin now supports the Norwegian language.
 
 = 1.0 =
