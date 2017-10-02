@@ -168,52 +168,56 @@ function vcfj_options_page() {
 }
 
 function vcfj_jquery_core_version() {
+  if (!is_admin()) {
 
-  // Deregister the standard jQuery Core
-  wp_deregister_script( 'jquery' );
+    // Deregister the standard jQuery Core
+    wp_deregister_script( 'jquery' );
 
-  // Get options
-  $options = get_option( 'vcfj_settings' );
+      // Get options
+    $options = get_option( 'vcfj_settings' );
 
-  if(isset($options['vcfj_core_version']) && !empty($options['vcfj_core_version']) ){
-    $vcfj_core_version = $options['vcfj_core_version'];
-  } else {
-    $vcfj_core_version = '3.2.1';
-  }
+      if(isset($options['vcfj_core_version']) && !empty($options['vcfj_core_version']) ){
+      $vcfj_core_version = $options['vcfj_core_version'];
+    } else {
+      $vcfj_core_version = '3.2.1';
+    }
 
-  // Register the new and minified jQuery Core
-  if($options['vcfj_core_version'] == '3.2.2-pre') {
-    // Register the pre-version
-    wp_register_script( 'jquery', 'https://code.jquery.com/jquery-git.min.js', false, $vcfj_core_version );
-  } else {
-    // Register the stable version
-    wp_register_script( 'jquery', 'https://code.jquery.com/jquery-' . $vcfj_core_version . '.min.js', false, $vcfj_core_version );
+      // Register the new and minified jQuery Core
+    if($options['vcfj_core_version'] == '3.2.2-pre') {
+      // Register the pre-version
+      wp_register_script( 'jquery', 'https://code.jquery.com/jquery-git.min.js', false, $vcfj_core_version );
+    } else {
+      // Register the stable version
+      wp_register_script( 'jquery', 'https://code.jquery.com/jquery-' . $vcfj_core_version . '.min.js', false, $vcfj_core_version );
+    }
   }
 }
 add_action('wp_enqueue_scripts', 'vcfj_jquery_core_version');
 
 
 function vcfj_jquery_migrate_version() {
+  if (!is_admin()) {
 
-  // Deregister core jQuery Migrate
-  wp_deregister_script( 'jquery-migrate' );
+    // Deregister core jQuery Migrate
+    wp_deregister_script( 'jquery-migrate' );
 
-  // Get options
-  $options = get_option( 'vcfj_settings' );
+    // Get options
+    $options = get_option( 'vcfj_settings' );
 
-  if(isset($options['vcfj_migrate_version']) && !empty($options['vcfj_migrate_version']) ){
-    $vcfj_migrate_version = $options['vcfj_migrate_version'];
-  } else {
-    $vcfj_migrate_version = '3.0.0';
-  }
+    if(isset($options['vcfj_migrate_version']) && !empty($options['vcfj_migrate_version']) ){
+      $vcfj_migrate_version = $options['vcfj_migrate_version'];
+    } else {
+      $vcfj_migrate_version = '3.0.0';
+    }  
 
-  // Enqueue the new and minified jQuery Migrate
-  if($options['vcfj_migrate_version'] == '3.0.1-pre') {
-    // Register the pre-version
-    wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-git.min.js', array( 'jquery' ), $vcfj_migrate_version );
-  } else {
-    // Register the stable version
-    wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-' . $vcfj_migrate_version . '.min.js', array( 'jquery' ), $vcfj_migrate_version );
+    // Enqueue the new and minified jQuery Migrate
+    if($options['vcfj_migrate_version'] == '3.0.1-pre') {
+      // Register the pre-version
+      wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-git.min.js', array( 'jquery' ), $vcfj_migrate_version );
+    } else {
+      // Register the stable version
+      wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-' . $vcfj_migrate_version . '.min.js', array( 'jquery' ), $vcfj_migrate_version );
+    }
   }
 }
 add_action('wp_enqueue_scripts', 'vcfj_jquery_migrate_version');

@@ -2,8 +2,8 @@
 Contributors: leanderiversen
 Tags: jquery, core, migrate, javascript, update, control, version
 Requires at least: 4.0
-Tested up to: 4.8
-Stable tag: 1.0.4
+Tested up to: 4.8.2
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,9 @@ If you like the plugin, please review it! Every review is highly appreciated, bu
 
 
 == Changelog ==
+= 1.0.5 =
+* A bug that caused jQuery Core and jQuery Migrate to be dequeued while logged in to the admin area has now been resolved.
+
 = 1.0.4 =
 * Added the pre-versions of jQuery Core version 3.2.2 and jQuery Migrate version 3.0.1, in case you want to test your website with the upcoming versions of jQuery. The plugin still defaults to the latest stable version of jQuery.
 
