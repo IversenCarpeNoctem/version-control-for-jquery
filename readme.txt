@@ -2,15 +2,15 @@
 Contributors: leanderiversen
 Tags: jquery, core, migrate, javascript, update, control, version
 Requires at least: 4.0
-Tested up to: 4.8
-Stable tag: 1.0.4
+Tested up to: 4.9.2
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Version Control for jQuery is the easiest way to control the version of jQueryused on your website.
+Version Control for jQuery is the easiest way to control the version of jQuery used on your website.
 
 == Description ==
-Version Control for jQuery is the easiest way to control the version of jQuery used on your website. Whether you just want to run a stable WordPress website, or if you are a developer and want to cross check your website with the various version of jQuery, the plugin will always have the latest minified version of jQuery ready for you, loaded from the super-fast jQuery CDN. You can also test the latest pre-versions of both jQuery Core and jQuery Migrate, but the settings of the plugin will always default to the latest stable release.
+Version Control for jQuery is the easiest way to control the version of jQuery used on your website. Whether you just want to run a stable WordPress website, or if you are a developer and want to cross check your website with the various version of jQuery, the plugin will always have the latest minified version of jQuery ready for you, loaded from the super-fast jQuery CDN. The plugin will default to the latest pre-release of both jQuery Core and jQuery Migrate, but this can easily be changed from the settings page, in case you prefer to use the latest official release.
 
 Please notice that no files are replaced, therefore deactivation of this plugin returns your site to it's original state.
 
@@ -24,6 +24,20 @@ If you like the plugin, please review it! Every review is highly appreciated, bu
 
 
 == Changelog ==
+= 1.0.8 =
+* jQuery Core versions 3.3.0 and 3.3.1 have been added.
+* Minor adjustments.
+
+= 1.0.7 =
+* Minor adjustments.
+* Support for WordPress 4.9.
+
+= 1.0.6 =
+* jQuery Migrate version 3.0.1 has been added.
+
+= 1.0.5 =
+* A bug that caused jQuery Core and jQuery Migrate to be dequeued while logged in to the admin area has now been resolved.
+
 = 1.0.4 =
 * Added the pre-versions of jQuery Core version 3.2.2 and jQuery Migrate version 3.0.1, in case you want to test your website with the upcoming versions of jQuery. The plugin still defaults to the latest stable version of jQuery.
 

@@ -43,14 +43,18 @@ function vcfj_select_jquery_core_version() {
   // Get options
 	$options = get_option( 'vcfj_settings' );
 
-  if(isset($options['vcfj_core_version']) && !empty($options['vcfj_core_version']) ){
-    $vcfj_core_version = $options['vcfj_core_version'];
+  // Check if the jQuery Core version has been set
+  if(!isset($options['vcfj_core_version']) || empty($options['vcfj_core_version']) ) {
+    $vcfj_core_version = '3.3.1';
   } else {
-    $vcfj_core_version = '';
+    $vcfj_core_version = $options['vcfj_core_version'];
   }
+
 	?>
 	<select name='vcfj_settings[vcfj_core_version]'>
-    <option value='3.2.2-pre' name='vcfj_settings[vcfj_core_version]'<?php selected( $vcfj_core_version, '3.2.2-pre' ); ?>>jQuery Core 3.2.2-pre</option>
+    <option value='git-build' name='vcfj_settings[vcfj_core_version]'<?php selected( $vcfj_core_version, 'git-build' ); ?>>jQuery Core (Git Build)</option>
+    <option value='3.3.1' name='vcfj_settings[vcfj_core_version]'<?php selected( $vcfj_core_version, '3.3.1' ); ?>>jQuery Core 3.3.1</option>
+    <option value='3.3.0' name='vcfj_settings[vcfj_core_version]'<?php selected( $vcfj_core_version, '3.3.0' ); ?>>jQuery Core 3.3.0</option>
     <option value='3.2.1' name='vcfj_settings[vcfj_core_version]'<?php selected( $vcfj_core_version, '3.2.1' ); ?>>jQuery Core 3.2.1</option>
     <option value='3.2.0' name='vcfj_settings[vcfj_core_version]'<?php selected( $vcfj_core_version, '3.2.0' ); ?>>jQuery Core 3.2.0</option>
     <option value='3.1.1' name='vcfj_settings[vcfj_core_version]'<?php selected( $vcfj_core_version, '3.1.1' ); ?>>jQuery Core 3.1.1</option>
@@ -123,15 +127,18 @@ function vcfj_select_jquery_core_version() {
 function vcfj_select_jquery_migrate_version() {
   // Get options
 	$options = get_option( 'vcfj_settings' );
-  if(isset($options['vcfj_migrate_version']) && !empty($options['vcfj_migrate_version']) ){
-    $vcfj_migrate_version = $options['vcfj_migrate_version'];
+
+  // Check if the jQuery Migrate version has been set
+  if(!isset($options['vcfj_migrate_version']) || empty($options['vcfj_migrate_version']) ) {
+    $vcfj_migrate_version = '3.0.1';
   } else {
-    $vcfj_migrate_version = '';
+    $vcfj_migrate_version = $options['vcfj_migrate_version'];
   }
 
 	?>
 	<select name='vcfj_settings[vcfj_migrate_version]'>
-    <option value='3.0.1-pre' name='vcfj_settings[vcfj_migrate_version]'<?php selected( $vcfj_migrate_version, '3.0.1-pre' ); ?>>jQuery Migrate 3.0.1-pre</option>
+    <option value='git-build' name='vcfj_settings[vcfj_migrate_version]'<?php selected( $vcfj_migrate_version, 'git-build' ); ?>>jQuery Migrate (Git Build)</option>
+    <option value='3.0.1' name='vcfj_settings[vcfj_migrate_version]'<?php selected( $vcfj_migrate_version, '3.0.1' ); ?>>jQuery Migrate 3.0.1</option>
 		<option value='3.0.0' name='vcfj_settings[vcfj_migrate_version]'<?php selected( $vcfj_migrate_version, '3.0.0' ); ?>>jQuery Migrate 3.0.0</option>
 		<option value='1.4.1' name='vcfj_settings[vcfj_migrate_version]'<?php selected( $vcfj_migrate_version, '1.4.1' ); ?>>jQuery Migrate 1.4.1</option>
 		<option value='1.4.0' name='vcfj_settings[vcfj_migrate_version]'<?php selected( $vcfj_migrate_version, '1.4.0' ); ?>>jQuery Migrate 1.4.0</option>
@@ -168,52 +175,58 @@ function vcfj_options_page() {
 }
 
 function vcfj_jquery_core_version() {
+  // Check that the user is not viewing the administration panel
+  if (!is_admin()) {
 
-  // Deregister the standard jQuery Core
-  wp_deregister_script( 'jquery' );
+    // Deregister the standard jQuery Core
+    wp_deregister_script( 'jquery' );
 
-  // Get options
-  $options = get_option( 'vcfj_settings' );
+    // Get options
+    $options = get_option( 'vcfj_settings' );
 
-  if(isset($options['vcfj_core_version']) && !empty($options['vcfj_core_version']) ){
-    $vcfj_core_version = $options['vcfj_core_version'];
-  } else {
-    $vcfj_core_version = '3.2.1';
-  }
+    if(!isset($options['vcfj_core_version']) || empty($options['vcfj_core_version']) ) {
+      $vcfj_core_version = '3.3.1';
+    } else {
+      $vcfj_core_version = $options['vcfj_core_version'];
+    }
 
-  // Register the new and minified jQuery Core
-  if($options['vcfj_core_version'] == '3.2.2-pre') {
-    // Register the pre-version
-    wp_register_script( 'jquery', 'https://code.jquery.com/jquery-git.min.js', false, $vcfj_core_version );
-  } else {
-    // Register the stable version
-    wp_register_script( 'jquery', 'https://code.jquery.com/jquery-' . $vcfj_core_version . '.min.js', false, $vcfj_core_version );
+    // Register the new and minified jQuery Core
+    if($options['vcfj_core_version'] == 'git-build') {
+      // Register the git build
+      wp_register_script( 'jquery', 'https://code.jquery.com/jquery-git.min.js', false, $vcfj_core_version );
+    } else {
+      // Register the stable version
+      wp_register_script( 'jquery', 'https://code.jquery.com/jquery-' . $vcfj_core_version . '.min.js', false, $vcfj_core_version );
+    }
   }
 }
 add_action('wp_enqueue_scripts', 'vcfj_jquery_core_version');
 
 
 function vcfj_jquery_migrate_version() {
+   // Check that the user is not viewing the administration panel
+  if (!is_admin()) {
 
-  // Deregister core jQuery Migrate
-  wp_deregister_script( 'jquery-migrate' );
+    // Deregister core jQuery Migrate
+    wp_deregister_script( 'jquery-migrate' );
 
-  // Get options
-  $options = get_option( 'vcfj_settings' );
+    // Get options
+    $options = get_option( 'vcfj_settings' );
 
-  if(isset($options['vcfj_migrate_version']) && !empty($options['vcfj_migrate_version']) ){
-    $vcfj_migrate_version = $options['vcfj_migrate_version'];
-  } else {
-    $vcfj_migrate_version = '3.0.0';
-  }
+    if(!isset($options['vcfj_migrate_version']) || empty($options['vcfj_migrate_version']) ) {
+      $vcfj_migrate_version = '3.0.1';
+    } else {
+      $vcfj_migrate_version = $options['vcfj_migrate_version'];
+    }
 
-  // Enqueue the new and minified jQuery Migrate
-  if($options['vcfj_migrate_version'] == '3.0.1-pre') {
-    // Register the pre-version
-    wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-git.min.js', array( 'jquery' ), $vcfj_migrate_version );
-  } else {
-    // Register the stable version
-    wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-' . $vcfj_migrate_version . '.min.js', array( 'jquery' ), $vcfj_migrate_version );
+    // Enqueue the new and minified jQuery Migrate
+    if($options['vcfj_migrate_version'] == 'git-build') {
+      // Register the git build
+      wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-git.min.js', array( 'jquery' ), $vcfj_migrate_version );
+    } else {
+      // Register the stable version
+      wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-' . $vcfj_migrate_version . '.min.js', array( 'jquery' ), $vcfj_migrate_version );
+    }
   }
 }
 add_action('wp_enqueue_scripts', 'vcfj_jquery_migrate_version');

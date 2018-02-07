@@ -3,7 +3,7 @@
  * Plugin Name: Version Control for jQuery
  * Plugin URI: https://github.com/IversenCarpeNoctem/version-control-for-query
  * Description: Version Control for jQuery is the easiest way to control the version of jQuery used on your website.
- * Version: 1.0.4
+ * Version: 1.0.8
  * Author: Iversen - Carpe Noctem
  * Author URI: https://github.com/IversenCarpeNoctem
  * License: GPLv2 or later
@@ -22,10 +22,12 @@ $pathinfo = pathinfo( dirname( plugin_basename( __FILE__ ) ) );
 if (!defined('VCFJ_PATH')) {
 	define('VCFJ_PATH', plugin_dir_path( __FILE__ ));
 }
+
 // Define plugin name
 if (!defined('VCFJ_NAME')) {
 	define('VCFJ_NAME', $pathinfo['filename']);
 }
+
 // Define plugin URL
 if (!defined('VCFJ_URL')) {
 	define('VCFJ_URL', plugins_url(VCFJ_NAME) . '/');
@@ -33,7 +35,7 @@ if (!defined('VCFJ_URL')) {
 
 // Load translation
 function vcfj_load_textdomain() {
-   load_plugin_textdomain( 'version-control-for-query', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+   load_plugin_textdomain( 'version-control-for-jquery', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'vcfj_load_textdomain' );
 
